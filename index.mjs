@@ -16,7 +16,7 @@ const FEED_DESC = `36氪用户 ${USER_ID} 的文章更新`;
 const SELF_URL = `https://tomdhyang-byte.github.io/36kr-user-feed/feed.xml`;
 
 // Tunables
-const MAX_ITEMS = 40;
+const MAX_ITEMS = 10;
 const PER_ARTICLE_DELAY = 600;
 
 function sleep(ms) {
