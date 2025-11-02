@@ -2,13 +2,14 @@
   "name": "36kr-user-feed",
   "version": "1.0.0",
   "type": "module",
-  "private": true,
   "scripts": {
     "build": "node index.mjs",
     "start": "node index.mjs"
   },
   "dependencies": {
-    "node-fetch": "^3.3.2",
+    "@mozilla/readability": "^0.5.0",
+    "jsdom": "^24.0.0",
+    "node-fetch": "^2.7.0",
     "sanitize-html": "^2.13.0",
     "xmlbuilder2": "^3.1.1"
   }
