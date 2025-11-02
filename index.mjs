@@ -6,7 +6,6 @@ import fetch from 'node-fetch';
 
 const USER_ID = process.env.USER_ID || '5081058'; // target user
 const BASE = 'https://www.36kr.com';
-const USER_URL = `${BASE}/user/${USER_ID}`;
 const OUTPUT_DIR = 'docs';
 const OUTPUT_FILE = path.join(OUTPUT_DIR, 'feed.xml');
 
@@ -16,8 +15,9 @@ const FEED_DESC = `36氪用户 ${USER_ID} 的文章更新`;
 const SELF_URL = `https://tomdhyang-byte.github.io/36kr-user-feed/feed.xml`;
 
 // Tunables
-const MAX_ITEMS = 10;
-const PER_ARTICLE_DELAY = 600;
+const MAX_ITEMS = 40;         // 最多輸出幾篇
+const PAGE_SIZE = 20;         // 每次 API 取回數量
+const PER_ARTICLE_DELAY = 0;  // 這版直接用 API 產資料，通常不需要 delay
 
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -33,121 +33,6 @@ function sanitize(html) {
     allowedSchemes: ['http','https','data'],
     disallowedTagsMode: 'discard'
   });
-}
-
-/** 遞迴掃描物件樹，蒐集純數字(>=5位)的 articleId/itemId/id */
-function collectIdsFromObject(node, outSet) {
-  if (!node) return;
-  if (Array.isArray(node)) {
-    for (const item of node) collectIdsFromObject(item, outSet);
-    return;
-  }
-  if (typeof node === 'object') {
-    for (const [k, v] of Object.entries(node)) {
-      if (v && typeof v === 'object') {
-        collectIdsFromObject(v, outSet);
-      } else {
-        if (/(^id$|articleId|itemId)/i.test(k)) {
-          const m = String(v).match(/^\d{5,}$/);
-          if (m) outSet.add(m[0]);
-        }
-      }
-    }
-  }
-}
-
-function extractArticleLinks(html) {
-  const text = html.replace(/\s+/g, ' ');
-  const ids = new Set();
-
-  // 方式 1：傳統 <a href="/p/1234567890">
-  {
-    let m;
-    const re = /href="\/p\/(\d{5,})"/g;
-    while ((m = re.exec(text)) !== null) {
-      ids.add(m[1]);
-      if (ids.size >= MAX_ITEMS) break;
-    }
-  }
-
-  // 方式 2：data-articleid="1234567890"
-  if (ids.size < MAX_ITEMS) {
-    let m;
-    const re = /data-articleid="(\d{5,})"/g;
-    while ((m = re.exec(text)) !== null) {
-      ids.add(m[1]);
-      if (ids.size >= MAX_ITEMS) break;
-    }
-  }
-
-  // 方式 3：Next.js 內嵌 JSON：__NEXT_DATA__
-  if (ids.size < MAX_ITEMS) {
-    const nextDataMatch = /<script[^>]+id=["']__NEXT_DATA__["'][^>]*>(.*?)<\/script>/i.exec(text);
-    if (nextDataMatch && nextDataMatch[1]) {
-      try {
-        const json = JSON.parse(nextDataMatch[1]);
-        collectIdsFromObject(json, ids);
-      } catch {
-        // 忽略 JSON parse 失敗
-      }
-    }
-  }
-
-  // 方式 4：保底掃描任意 JSON 片段的鍵值
-  if (ids.size < MAX_ITEMS) {
-    let m;
-    const re = /(?:"articleId"|"itemId"|"id")\s*:\s*"?(\d{5,})"?/g;
-    while ((m = re.exec(text)) !== null) {
-      ids.add(m[1]);
-      if (ids.size >= MAX_ITEMS) break;
-    }
-  }
-
-  // 輸出完整連結（去重）
-  return Array.from(ids).slice(0, MAX_ITEMS).map(id => `${BASE}/p/${id}`);
-}
-
-async function fetchArticleMeta(url) {
-  try {
-    const res = await fetch(url, {
-      headers: {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-        'Accept': 'text/html,application/xhtml+xml',
-        'Accept-Language': 'zh-TW,zh;q=0.9,en;q=0.8',
-        'Referer': 'https://www.36kr.com/'
-      },
-      timeout: 20000
-    });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const html = await res.text();
-
-    const ogTitle = /<meta[^>]+property=["']og:title["'][^>]+content=["']([^"']+)["']/i.exec(html)?.[1];
-    const metaTitle = /<meta[^>]+name=["']title["'][^>]+content=["']([^"']+)["']/i.exec(html)?.[1];
-    const titleTag = /<title>([^<]+)<\/title>/i.exec(html)?.[1];
-
-    const ogDesc = /<meta[^>]+property=["']og:description["'][^>]+content=["']([^"']+)["']/i.exec(html)?.[1];
-    const metaDesc = /<meta[^>]+name=["']description["'][^>]+content=["']([^"']+)["']/i.exec(html)?.[1];
-
-    const pubTime =
-      /<meta[^>]+property=["']article:published_time["'][^>]+content=["']([^"']+)["']/i.exec(html)?.[1] ||
-      /<meta[^>]+itemprop=["']datePublished["'][^>]+content=["']([^"']+)["']/i.exec(html)?.[1] ||
-      /<time[^>]+datetime=["']([^"']+)["']/i.exec(html)?.[1];
-
-    const title = (ogTitle || metaTitle || titleTag || '').trim();
-    const description = (ogDesc || metaDesc || '').trim();
-
-    return {
-      title: title || url,
-      description: description || '',
-      pubDate: pubTime ? new Date(pubTime).toUTCString() : null
-    };
-  } catch (err) {
-    return {
-      title: url,
-      description: '',
-      pubDate: null
-    };
-  }
 }
 
 function buildRSS({ items }) {
@@ -172,50 +57,125 @@ function buildRSS({ items }) {
   return create(feed).end({ prettyPrint: true });
 }
 
-async function main() {
-  console.log(`Fetching user page: ${USER_URL}`);
-  const res = await fetch(USER_URL, {
-    headers: {
-      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-      'Accept': 'text/html,application/xhtml+xml',
-      'Accept-Language': 'zh-TW,zh;q=0.9,en;q=0.8',
-      'Referer': 'https://www.36kr.com/'
-    },
-    timeout: 25000
-  });
-  if (!res.ok) {
-    throw new Error(`Fetch user page failed: HTTP ${res.status}`);
-  }
-  const html = await res.text();
+/**
+ * 直接呼叫 36氪 JSON API 拿用戶文章
+ * 端點: https://gateway.36kr.com/api/mis/me/article (POST, application/json)
+ * 參數:
+ * - userId: 目標用戶
+ * - pageEvent: 0=first page, 1=next page
+ * - pageCallback: 下一頁用的 token（回應 data.pageCallback）
+ * - pageSize, siteId=1, platformId=2, partner_id='web', timestamp=Date.now()
+ */
+async function fetchArticlesViaAPI(userId, maxItems) {
+  const url = 'https://gateway.36kr.com/api/mis/me/article';
+  const headers = {
+    'Accept': 'application/json, text/plain, */*',
+    'Content-Type': 'application/json',
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+    'Accept-Language': 'zh-TW,zh;q=0.9,en;q=0.8',
+    'Origin': 'https://36kr.com',
+    'Referer': 'https://36kr.com/'
+  };
 
-  const links = extractArticleLinks(html);
-  if (links.length === 0) {
-    throw new Error('No article links found. 已嘗試 <a>/data-articleid/__NEXT_DATA__/泛用 JSON 掃描仍無結果，可能是頁面暫時無資料或反爬阻擋。建議稍後重試或先將 MAX_ITEMS 降為 10 驗證流程。');
-  }
-  console.log(`Found ${links.length} article links.`);
-
+  let pageEvent = 0;        // 第一頁
+  let pageCallback = '';    // 由回應提供
   const items = [];
-  for (let i = 0; i < links.length; i++) {
-    const link = links[i];
-    console.log(`  [${i + 1}/${links.length}] Fetching: ${link}`);
-    const meta = await fetchArticleMeta(link);
-    items.push({
-      title: meta.title,
-      link,
-      pubDate: meta.pubDate,
-      description: meta.description
+
+  while (items.length < maxItems) {
+    const body = {
+      partner_id: 'web',
+      timestamp: Date.now(),
+      param: {
+        userId: String(userId),
+        pageEvent,
+        pageSize: PAGE_SIZE,
+        pageCallback,
+        siteId: 1,
+        platformId: 2
+      }
+    };
+
+    const res = await fetch(url, {
+      method: 'POST',
+      headers,
+      body: JSON.stringify(body),
+      timeout: 25000
     });
-    await sleep(PER_ARTICLE_DELAY);
+
+    if (!res.ok) {
+      throw new Error(`API HTTP ${res.status}`);
+    }
+
+    const json = await res.json().catch(() => ({}));
+    const data = json?.data || json?.dataList || {};
+    const list = data?.itemList || data?.items || data?.list || [];
+
+    // 收集文章
+    for (const it of list) {
+      // 常見欄位示意：itemId, templateMaterial.widgetTitle, templateMaterial.widgetContent, publishTime(ms)
+      const id =
+        it?.itemId ??
+        it?.id ??
+        it?.articleId ??
+        it?.templateMaterial?.id;
+
+      if (!id) continue;
+
+      const title =
+        it?.templateMaterial?.widgetTitle ??
+        it?.title ??
+        `文章 ${id}`;
+
+      const description =
+        it?.templateMaterial?.widgetContent ??
+        it?.summary ??
+        '';
+
+      // 發佈時間：常見為毫秒時間戳
+      const ts =
+        it?.publishTime ??
+        it?.templateMaterial?.publishTime ??
+        it?.createdTime ??
+        null;
+      const pubDate = ts ? new Date(Number(ts)).toUTCString() : null;
+
+      items.push({
+        title: String(title).trim() || `文章 ${id}`,
+        link: `${BASE}/p/${id}`,
+        pubDate,
+        description: String(description || '').trim()
+      });
+
+      if (items.length >= maxItems) break;
+    }
+
+    // 準備下一頁
+    const nextCallback = data?.pageCallback || data?.nextPageCallback || '';
+    if (!nextCallback || list.length === 0) {
+      break; // 沒有下一頁了
+    }
+    pageCallback = nextCallback;
+    pageEvent = 1; // 後續頁面使用 1
+    if (PER_ARTICLE_DELAY) await sleep(PER_ARTICLE_DELAY);
+  }
+
+  return items.slice(0, maxItems);
+}
+
+async function main() {
+  console.log(`Fetching articles via API for user: ${USER_ID}`);
+
+  const items = await fetchArticlesViaAPI(USER_ID, MAX_ITEMS);
+
+  if (!items.length) {
+    throw new Error('API 回傳為空，可能是反爬或該用戶目前沒有可見的文章。稍後再試或於本機確認 API 回應內容。');
   }
 
   if (!fs.existsSync(OUTPUT_DIR)) fs.mkdirSync(OUTPUT_DIR, { recursive: true });
   const xml = buildRSS({ items });
   fs.writeFileSync(OUTPUT_FILE, xml, 'utf8');
   console.log(`RSS written: ${OUTPUT_FILE}`);
-
-  console.log('\nNext steps:');
-  console.log(`1) 打开 GitHub Pages，指向 /docs 资料夹`);
-  console.log(`2) 订阅 URL: ${SELF_URL}`);
+  console.log(`Subscribe URL: ${SELF_URL}`);
 }
 
 main().catch(err => {
