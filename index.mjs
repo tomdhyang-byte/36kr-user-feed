@@ -13,7 +13,7 @@ const OUTPUT_FILE = path.join(OUTPUT_DIR, 'feed.xml');
 // Feed basic info
 const FEED_TITLE = '刀客Doc';
 const FEED_DESC = `36氪用户 ${USER_ID} 的文章更新`;
-const SELF_URL = `https://tomdhyyang-byte.github.io/36kr-user-feed/feed.xml`;
+const SELF_URL = `https://tomdhyang-byte.github.io/36kr-user-feed/feed.xml`;
 
 // Tunables
 const MAX_ITEMS = 40;
@@ -35,49 +35,86 @@ function sanitize(html) {
   });
 }
 
+/** 遞迴掃描物件樹，蒐集純數字(>=5位)的 articleId/itemId/id */
+function collectIdsFromObject(node, outSet) {
+  if (!node) return;
+  if (Array.isArray(node)) {
+    for (const item of node) collectIdsFromObject(item, outSet);
+    return;
+  }
+  if (typeof node === 'object') {
+    for (const [k, v] of Object.entries(node)) {
+      if (v && typeof v === 'object') {
+        collectIdsFromObject(v, outSet);
+      } else {
+        if (/(^id$|articleId|itemId)/i.test(k)) {
+          const m = String(v).match(/^\d{5,}$/);
+          if (m) outSet.add(m[0]);
+        }
+      }
+    }
+  }
+}
+
 function extractArticleLinks(html) {
   const text = html.replace(/\s+/g, ' ');
   const ids = new Set();
 
   // 方式 1：傳統 <a href="/p/1234567890">
-  let m1;
-  const re1 = /href="\/p\/(\d{5,})"/g;
-  while ((m1 = re1.exec(text)) !== null) {
-    ids.add(m1[1]);
-    if (ids.size >= MAX_ITEMS) break;
+  {
+    let m;
+    const re = /href="\/p\/(\d{5,})"/g;
+    while ((m = re.exec(text)) !== null) {
+      ids.add(m[1]);
+      if (ids.size >= MAX_ITEMS) break;
+    }
   }
 
   // 方式 2：data-articleid="1234567890"
   if (ids.size < MAX_ITEMS) {
-    let m2;
-    const re2 = /data-articleid="(\d{5,})"/g;
-    while ((m2 = re2.exec(text)) !== null) {
-      ids.add(m2[1]);
+    let m;
+    const re = /data-articleid="(\d{5,})"/g;
+    while ((m = re.exec(text)) !== null) {
+      ids.add(m[1]);
       if (ids.size >= MAX_ITEMS) break;
     }
   }
 
-  // 方式 3：頁面內嵌 JSON（常見鍵：articleId / itemId / id）
+  // 方式 3：Next.js 內嵌 JSON：__NEXT_DATA__
   if (ids.size < MAX_ITEMS) {
-    let m3;
-    const re3 = /(?:"articleId"|"itemId"|"id")\s*:\s*"?(\d{5,})"?/g;
-    while ((m3 = re3.exec(text)) !== null) {
-      ids.add(m3[1]);
+    const nextDataMatch = /<script[^>]+id=["']__NEXT_DATA__["'][^>]*>(.*?)<\/script>/i.exec(text);
+    if (nextDataMatch && nextDataMatch[1]) {
+      try {
+        const json = JSON.parse(nextDataMatch[1]);
+        collectIdsFromObject(json, ids);
+      } catch {
+        // 忽略 JSON parse 失敗
+      }
+    }
+  }
+
+  // 方式 4：保底掃描任意 JSON 片段的鍵值
+  if (ids.size < MAX_ITEMS) {
+    let m;
+    const re = /(?:"articleId"|"itemId"|"id")\s*:\s*"?(\d{5,})"?/g;
+    while ((m = re.exec(text)) !== null) {
+      ids.add(m[1]);
       if (ids.size >= MAX_ITEMS) break;
     }
   }
 
-  // 組網址、去重
-  return Array.from(ids).map(id => `${BASE}/p/${id}`);
+  // 輸出完整連結（去重）
+  return Array.from(ids).slice(0, MAX_ITEMS).map(id => `${BASE}/p/${id}`);
 }
 
 async function fetchArticleMeta(url) {
   try {
     const res = await fetch(url, {
       headers: {
-      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-      'Accept': 'text/html,application/xhtml+xml',
-      'Accept-Language': 'zh-TW,zh;q=0.9,en;q=0.8'
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        'Accept': 'text/html,application/xhtml+xml',
+        'Accept-Language': 'zh-TW,zh;q=0.9,en;q=0.8',
+        'Referer': 'https://www.36kr.com/'
       },
       timeout: 20000
     });
@@ -139,8 +176,10 @@ async function main() {
   console.log(`Fetching user page: ${USER_URL}`);
   const res = await fetch(USER_URL, {
     headers: {
-      'User-Agent': 'Mozilla/5.0 (RSS Generator; +https://github.com/)',
-      'Accept': 'text/html,application/xhtml+xml'
+      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+      'Accept': 'text/html,application/xhtml+xml',
+      'Accept-Language': 'zh-TW,zh;q=0.9,en;q=0.8',
+      'Referer': 'https://www.36kr.com/'
     },
     timeout: 25000
   });
@@ -151,7 +190,7 @@ async function main() {
 
   const links = extractArticleLinks(html);
   if (links.length === 0) {
-    throw new Error('No article links found. (36氪页面可能改版，或需要改抓取策略)');
+    throw new Error('No article links found. 已嘗試 <a>/data-articleid/__NEXT_DATA__/泛用 JSON 掃描仍無結果，可能是頁面暫時無資料或反爬阻擋。建議稍後重試或先將 MAX_ITEMS 降為 10 驗證流程。');
   }
   console.log(`Found ${links.length} article links.`);
 
