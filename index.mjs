@@ -5,7 +5,7 @@ import path from 'path';
 import fetch from 'node-fetch';
 
 const USER_ID = process.env.USER_ID || '5081058'; // target user
-const BASE = 'https://36kr.com';
+const BASE = 'https://www.36kr.com';
 const USER_URL = `${BASE}/user/${USER_ID}`;
 const OUTPUT_DIR = 'docs';
 const OUTPUT_FILE = path.join(OUTPUT_DIR, 'feed.xml');
@@ -36,24 +36,48 @@ function sanitize(html) {
 }
 
 function extractArticleLinks(html) {
-  const text = html.replace(/\n/g, ' ');
-  const linkSet = new Set();
-  const re = /href="(\/p\/\d+)"[^>]*>(.*?)<\/a>/g;
-  let m;
-  while ((m = re.exec(text)) !== null) {
-    const href = m[1];
-    linkSet.add(new URL(href, BASE).href);
-    if (linkSet.size >= MAX_ITEMS) break;
+  const text = html.replace(/\s+/g, ' ');
+  const ids = new Set();
+
+  // 方式 1：傳統 <a href="/p/1234567890">
+  let m1;
+  const re1 = /href="\/p\/(\d{5,})"/g;
+  while ((m1 = re1.exec(text)) !== null) {
+    ids.add(m1[1]);
+    if (ids.size >= MAX_ITEMS) break;
   }
-  return Array.from(linkSet);
+
+  // 方式 2：data-articleid="1234567890"
+  if (ids.size < MAX_ITEMS) {
+    let m2;
+    const re2 = /data-articleid="(\d{5,})"/g;
+    while ((m2 = re2.exec(text)) !== null) {
+      ids.add(m2[1]);
+      if (ids.size >= MAX_ITEMS) break;
+    }
+  }
+
+  // 方式 3：頁面內嵌 JSON（常見鍵：articleId / itemId / id）
+  if (ids.size < MAX_ITEMS) {
+    let m3;
+    const re3 = /(?:"articleId"|"itemId"|"id")\s*:\s*"?(\d{5,})"?/g;
+    while ((m3 = re3.exec(text)) !== null) {
+      ids.add(m3[1]);
+      if (ids.size >= MAX_ITEMS) break;
+    }
+  }
+
+  // 組網址、去重
+  return Array.from(ids).map(id => `${BASE}/p/${id}`);
 }
 
 async function fetchArticleMeta(url) {
   try {
     const res = await fetch(url, {
       headers: {
-        'User-Agent': 'Mozilla/5.0 (RSS Generator; +https://github.com/)',
-        'Accept': 'text/html,application/xhtml+xml'
+      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+      'Accept': 'text/html,application/xhtml+xml',
+      'Accept-Language': 'zh-TW,zh;q=0.9,en;q=0.8'
       },
       timeout: 20000
     });
