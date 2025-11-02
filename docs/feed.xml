@@ -1,289 +1,223 @@
 <?xml version="1.0"?>
-<rss version="2.0">
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>刀客Doc</title>
-    <link>https://tomdhyang-byte.github.io/36kr-user-feed/feed.xml</link>
+    <link>https://tomdhyang-byte.github.io/36kr-user-feed/</link>
     <description>36氪用户 5081058 的文章更新</description>
-    <lastBuildDate>Sun, 02 Nov 2025 08:41:21 GMT</lastBuildDate>
+    <language>zh-CN</language>
+    <ttl>30</ttl>
+    <lastBuildDate>Sun, 02 Nov 2025 09:00:34 GMT</lastBuildDate>
+    <atom:link href="https://tomdhyang-byte.github.io/36kr-user-feed/feed.xml" rel="self" type="application/rss+xml"/>
     <item>
       <title>亚马逊和谷歌的广告战争，开始打到云上了</title>
       <link>https://www.36kr.com/p/3532943217940873</link>
-      <guid>https://www.36kr.com/p/3532943217940873</guid>
+      <guid isPermaLink="true">https://www.36kr.com/p/3532943217940873</guid>
       <pubDate>Fri, 31 Oct 2025 12:28:28 GMT</pubDate>
-      <description><![CDATA[亚马逊和谷歌的广告战争升级]]></description>
+      <description>&lt;![CDATA[ 亚马逊和谷歌的广告战争升级 ]]&gt;</description>
+      <content:encoded>&lt;![CDATA[ 
+ 
+ 
+  &lt;p&gt;10月31日，亚马逊发布25年第三季度财报：其旗下云计算业务AWS收入实现近三年来最快增速，这带动公司对下一季度的销售额预期高于市场预估，从而在盘后交易中股价大涨约 14%。&lt;/p&gt;
+  &lt;p&gt;在分析师电话会上，CEO Andy Jassy表示：“从目前的增长势头来看，我相信我们能够在接下来的时间里保持这样的发展节奏。我认为我们在多个领域都具备持续增长的潜力。”&lt;strong&gt;他指出，这其中包括广告业务和零售销售。&lt;/strong&gt;&lt;/p&gt;
+  &lt;p&gt;就在10月23日，AWS推出了一项名为RTB Fabric的新服务。根据官方的解释，它是一个面向实时竞价（RTB）广告场景的云托管产品，核心就是缓解广告技术公司在跨平台连接中常见的性能瓶颈，其中之一就是延迟问题。&lt;/p&gt;
+  &lt;p&gt;这一举措被认为是AWS在广告营销行业上的一个重要举措。&lt;/p&gt;
+  &lt;p&gt;因为在程序化广告世界里，竞价必须在极短的时间内完成：当用户打开一个App或网页，后台会立刻触发一次广告竞价：不同广告商同时出价，系统要在几十毫秒内选出最高价并返回结果。&lt;/p&gt;
+  &lt;p&gt;问题在于，广告公司分布在不同的云上、不同国家、不同系统里，信号在传输时绕来绕去，速度就会产生延迟，进而影响广告主的投放效率。&lt;/p&gt;
+  &lt;p&gt;简单来说，RTB Fabric就是亚马逊在公有云的基础上，专门为DSP、SSP、adx等广告技术公司铺了一张低延迟的云服务。这些公司不再需要自己去搭建复杂的点对点连接，只要接入这张网，就能在 AWS 的基础设施上完成广告请求的传输和竞价。&lt;/p&gt;
+  &lt;p&gt;从亚马逊的描述来看，这项服务主打“个位数毫秒级延迟”与最高可达 80% 的网络成本优化，并整合了包括 Amazon Ads、GumGum、Kargo、MobileFuse、TripleLift 等合作方在内的链路资源。&lt;/p&gt;
+  &lt;p&gt;&lt;img src="https://img.36krcdn.com/hsossms/20251031/v2_c6a64c2a757a4853b5794f66510a0ea2@5081058_oswg9303oswg792oswg343_img_000?x-oss-process=image/format,jpg/interlace,1" /&gt;&lt;/p&gt;
+  &lt;p&gt;过去人们对亚马逊广告业务的关注往往聚焦在Amazon Ads上，这一次对广告行业的举措，出手的是AWS。虽然与Amazon Ads分属不同部门，不过目标指向如出一辙：谷歌。&lt;/p&gt;
+  &lt;p&gt;其实，大厂之间的广告竞争，暂时可以分为两层来看：&lt;/p&gt;
+  &lt;p&gt;第一层是我们最熟悉的，也是广告行业最“显眼”的部分——平台之间的较量。&lt;/p&gt;
+  &lt;p&gt;广告产品、投放工具、闭环能力、预算承接……所有和广告主、代理商直接打交道的环节，都在这层发生。这一层拼的是转化效率、数据能力，还有对投放链路的掌控力。&lt;/p&gt;
+  &lt;p&gt;但还有另一层，不那么为人所见，却同样关键——更基础的广告“云”层。&lt;/p&gt;
+  &lt;p&gt;它服务的不只有广告主和代理商，还有负责“搭系统”的广告技术（Ad Tech）公司。这个层面比拼的是更基础的东西：算力调度、延迟控制、跨平台连接能力，以及数据传输的稳定性。&lt;/p&gt;
+  &lt;h2&gt;&lt;strong&gt;01&lt;/strong&gt;&lt;/h2&gt;
+  &lt;p&gt;我们先看第一层。&lt;/p&gt;
+  &lt;p&gt;在广告市场，谷歌依然具有巨大的统治力，也因此不断成为反垄断审查的对象。所以谷歌很明显是守擂的一方，而亚马逊依然处于推进阶段。&lt;/p&gt;
+  &lt;p&gt;谷歌几乎主导了 RTB（实时竞价）的底层协议。&lt;/p&gt;
+  &lt;p&gt;这到不是说谷歌定了RTB的规则，行业里早已有 IAB（互动广告局）制定的 OpenRTB 标准。&lt;/p&gt;
+  &lt;p&gt;但是因为谷歌在整个广告链路里占据了太多关键节点、占据着绝对性的市场份额——从流量入口到交易通道，再到通信协议，它几乎都在场，所以市场里的行业标准依然不可避免地被谷歌生态“校准”了方向。&lt;/p&gt;
+  &lt;p&gt;因为当广告主想和最大的流量源、最大的买方平台（DV360）、最大的移动系统（Android）建立连接时，就必须确保——自己的请求格式、数据字段、加密方式、连接节奏，都能在谷歌的系统里跑通。&lt;/p&gt;
+  &lt;p&gt;&lt;strong&gt;十多年下来，整个RTB世界已经在谷歌的协议和传输逻辑上，沉淀出巨大的惯性。&lt;/strong&gt;&lt;/p&gt;
+  &lt;p&gt;当然了，理论上广告公司可以不走谷歌那条“默认高速”，但要付出代价。&lt;/p&gt;
+  &lt;p&gt;要么自己修路——也就是去和各大媒体、平台做直连，在主要城市部署服务器、拉专线、做多区域备份和隐私合规。那是一笔真金白银的投入，还有人力投入。如果无法在市场上形成规模，这样的基础设施建设往往得不偿失。&lt;/p&gt;
+  &lt;p&gt;另一种做法是“&lt;strong&gt;借非谷歌的路&lt;/strong&gt;”。可以对接多个第三方交易所（如 Magnite、PubMatic、OpenX 等），或者使用一些开源中间层（如 Prebid、APS），再加上零售媒体和 CTV（联网电视）平台的流量，&lt;strong&gt;绕过谷歌的高速，走一条更分散的省道&lt;/strong&gt;。&lt;/p&gt;
+  &lt;p&gt;听起来确实更灵活，选项更多，但实际操作远没有这么轻松：每家系统的对接标准都不同，用户身份体系也不兼容（有的用 UID2，有的用 RampID，还有的全靠自家第一方ID）。&lt;strong&gt;广告请求虽然能发出去，但协议五花八门，数据结构不统一，连用户是谁都要重新翻译一遍&lt;/strong&gt;。&lt;/p&gt;
+  &lt;p&gt;结果就是，“省道”虽然没收费站，但&lt;strong&gt;不够直、不够快、也不够稳&lt;/strong&gt;。广告公司得花大量精力维护接口，做跨平台的统一识别和频控管理。&lt;strong&gt;碎片化是自由的代价，也是效率的挑战&lt;/strong&gt;。&lt;/p&gt;
+  &lt;p&gt;亚马逊选择架桥铺路，自己做基建。&lt;/p&gt;
+  &lt;p&gt;对那些不愿将自己的广告系统搭建在谷歌生态上的公司来说，RTB Fabric的出现提供了一个现实可行的替代方案。&lt;/p&gt;
+  &lt;p&gt;它的大概逻辑是这样的：&lt;/p&gt;
+  &lt;p&gt;它不改OpenRTB所谓的交通规则，是把在 AWS 上的伙伴拉到同一条托管快道上。只要双方同云同区，非谷歌路径也能跑出高速的平顺感。&lt;/p&gt;
+  &lt;p&gt;这样广告请求可以不经过谷歌的协议链路，也能完成实时竞价。你只要用我的接口，自动获得和谷歌差不多的传输速度，但更便宜、更开放。&lt;/p&gt;
+  &lt;p&gt;从对谷歌的影响看，结合美国司法部（DOJ）对谷歌广告的反垄断起诉，就有了更清晰的对比视角：&lt;/p&gt;
+  &lt;p&gt;DOJ 反垄断是在“&lt;strong&gt;监管层面&lt;/strong&gt;”拆谷歌广告业务的塔，AWS 是在“&lt;strong&gt;技术层面&lt;/strong&gt;”松谷歌广告的地基，多少有点釜底抽薪的意思。两者的结果其实相通：&lt;strong&gt;都在削谷歌对广告系统的控制力。&lt;/strong&gt;&lt;/p&gt;
+  &lt;h2&gt;&lt;strong&gt;02&lt;/strong&gt;&lt;/h2&gt;
+  &lt;p&gt;在云市场，双方攻守易型：亚马逊是主导方，谷歌是更进取的一方。&lt;/p&gt;
+  &lt;p&gt;根据 Synergy Research Group 的二季度数据，AWS 是全球云基础设施服务领域的绝对领导者，市占30%，谷歌占比13%。&lt;/p&gt;
+  &lt;p&gt;广告技术公司历来是 AWS 的大客户，正如在分析师会议中对广告业务的提及，在AWS的官网行业分类里，广告与营销业务是11大垂类行业之一。&lt;/p&gt;
+  &lt;p&gt;&lt;img src="https://img.36krcdn.com/hsossms/20251031/v2_3a16dd15eadc4b8484bdd57c1d5d6968@5081058_oswg275891oswg1080oswg1258_img_000?x-oss-process=image/format,jpg/interlace,1" /&gt;&lt;/p&gt;
+  &lt;p&gt;在云计算的诸多行业中，广告科技公司可能是最早一批“全栖云端”的使用者——他们需要极高的计算吞吐能力、实时的数据处理、以及对全球节点的弹性调度，而这些，AWS恰好擅长。&lt;/p&gt;
+  &lt;p&gt;从AWS的官网看，过去十年间，不少包括雅虎DSP、the trade desk等公司几乎都把AWS视作默认选项，有的处于稳定定，有的出于与谷歌广告业务的竞对关系。&lt;/p&gt;
+  &lt;p&gt;不过这种“默认”，开始在过去几年被撼动。&lt;/p&gt;
+  &lt;p&gt;从整个云市场来看，谷歌在二季度的增速达到32%，AWS只有17%。三季度财报显示，AWS收入同比增长20%，高于市场预期的17.95%。（Synergy Research Group数据）&lt;/p&gt;
+  &lt;p&gt;GCP在广告行业的渗透，谷歌向潜在客户抛出的计算积分（credit）极其慷慨，直接抵扣费用，变相“补贴”迁移成本——这让不少广告技术公司开始认真考虑“搬家”。&lt;/p&gt;
+  &lt;p&gt;“过去三年里，谷歌下手相当狠。”一位参与RTB Fabric测试计划的广告技术公司高管对行业媒体digiday说。&lt;/p&gt;
+  &lt;p&gt;他认为，AWS推出RTB Fabric，很大程度上就是对谷歌云攻势的一次回击。“因为很多广告技术公司已经转向使用GCP”。&lt;/p&gt;
+  &lt;p&gt;就10月中旬的时候，广告集团WPP与GCP签署了一项协议：双方合作关系将继续延长五年，WPP承诺投入4亿美元用于谷歌技术和云服务。&lt;/p&gt;
+  &lt;p&gt;广告行业是一个特殊的垂直领域——数据密度高，时延要求极致，一次竞价需要毫秒级完成，一场活动可能动用数十亿条请求。&lt;/p&gt;
+  &lt;p&gt;在这个语境下，“云”就是一种直接影响竞价效率、广告收益的关键变量。&lt;/p&gt;
+  &lt;p&gt;AWS 的优势过去是“通用性”和“稳定性”，而无论是计算补贴、客户绑定，还是与广告集团的深度捆绑，谷歌云在用一种近乎“贴身肉搏”的方式向广告技术公司争夺份额。&lt;/p&gt;
+  &lt;p&gt;OpenX 的工程高级副总裁Joel Meyer，OpenX与谷歌的GCP的多年合作伙伴。&lt;/p&gt;
+  &lt;p&gt;他对媒体digiday说：AWS推出的RTB Fabric 显示出云计算在当前广告技术格局中的价值——在这个需要快速反应、快速上线新方案的行业背景下更是如此。&lt;/p&gt;
+  &lt;p&gt;“他们正在努力简化 RTB 领域中存在的种种复杂性……如果这个方案成功，我认为它将迫使谷歌也推出类似的产品。”他认为，“云计算的本质，就是降低创新门槛——无论是扩展 AI 解决方案，还是实现实时集成，而 RTB Fabric 其实正是推动这一目标的最新一步。”&lt;/p&gt;
+  &lt;h2&gt;&lt;strong&gt;03&lt;/strong&gt;&lt;/h2&gt;
+  &lt;p&gt;谷歌手里有全球最完整的广告系统，从广告主、投放平台，到媒体资源，几乎每一个环节都有布局。它还有谷歌云平台GCP 这个全球前三的云服务商，技术能力一流。&lt;/p&gt;
+  &lt;p&gt;按理说，它也可以修出一条“广告专用的云高速”，像亚马逊这次做的RTB Fabric一样。&lt;/p&gt;
+  &lt;p&gt;这里的问题是，谷歌一直是广告市场老大，为什么没有先一步做出类似fabric的产品？&lt;/p&gt;
+  &lt;p&gt;答案可能是：现在不方便做。&lt;/p&gt;
+  &lt;p&gt;谷歌正在被盯得很紧，特别是在美国和欧洲，反垄断的官司一个接一个。这个时候，如果它再推出一个“所有广告都跑在我这条云轨道上”的服务，不管初衷是什么，都会被外界看成是在进一步巩固垄断地位。&lt;/p&gt;
+  &lt;p&gt;想想，之前要取消cookie的时候，谷歌就推出了隐私沙盒的方案，英国的反垄断机构就立刻开启了事前审查机制，最终沙盒方案在6年后搁浅。&lt;/p&gt;
+  &lt;p&gt;在这种“风口浪尖”的阶段，谷歌的策略只能保守一点，少惹麻烦。&lt;/p&gt;
+  &lt;p&gt;&lt;strong&gt;还有一个是不同生态位，做出的不同战略选择。&lt;/strong&gt;&lt;/p&gt;
+  &lt;p&gt;对数字广告来说，精准是目的，速度是手段。&lt;/p&gt;
+  &lt;p&gt;这几年谷歌广告把更多火力放在“算得准”的一侧，而不是跑得快。&lt;/p&gt;
+  &lt;p&gt;谷歌这些年在模型与测量、Ads Data Hub、隐私计算与归因工具，目标是让广告主更聪明地花钱。&lt;/p&gt;
+  &lt;p&gt;不过谷歌并不是不做速度与网络：它只是&lt;strong&gt;没有把“RTB 低时延”产品化。&lt;/strong&gt;&lt;/p&gt;
+  &lt;p&gt;换句话说，谷歌更多依赖通用云+个案工程去追速度，而不是把“快”变成一个独立、标准化的商品卖点——这正好给了AWS一个切入口。&lt;/p&gt;
+  &lt;p&gt;从目前来看，我们很难说谁对谁错。&lt;/p&gt;
+  &lt;p&gt;在广告领域，谷歌和亚马逊的生态位本就不同，打法自然也各有逻辑。&lt;/p&gt;
+  &lt;p&gt;谷歌是行业的领导者，这一地位使它更倾向于维护现有秩序，强化生态闭环，确保平台收益最大化。在它的系统里，即便开放接口，真正的优先权也掌握在自己手中。&lt;/p&gt;
+  &lt;p&gt;而亚马逊，则是一个仍在扩张中的挑战者。&lt;/p&gt;
+  &lt;p&gt;它的广告业务并不是独立存在，而是深度嵌入在零售、内容、数据、物流等更大一盘棋中。它更关注“全链路”的掌控——从用户触点、转化行为，到最终的订单与履约。&lt;/p&gt;
+  &lt;p&gt;这让它的策略更具侵略性，也更务实。&lt;/p&gt;
+  &lt;p&gt;所以我们看到的，不是谷歌做不到，而是它一方面投鼠忌器，一方面在当下生态位上的自然选择。&lt;/p&gt;
+  &lt;p&gt;总之，谷歌和亚马逊两种路线，一种是制定规则，一种是重新定义问题。&lt;/p&gt;
+  &lt;h2&gt;&lt;strong&gt;04&lt;/strong&gt;&lt;/h2&gt;
+  &lt;p&gt;对于整个广告生态而言，正在发生一种悄然但深刻的变化。&lt;/p&gt;
+  &lt;p&gt;平台之间的竞争，正从前台的流量争夺、预算分配，延伸至后台的云服务。在数字广告这个技术高度密集、传输极度敏感的行业中，“谁掌控了链路”，往往也意味着“谁掌控了规则”。&lt;/p&gt;
+  &lt;p&gt;正如鲁迅所说，地上本没有路，走的人多了，也便成了路。&lt;/p&gt;
+  &lt;p&gt;&lt;strong&gt;RTB Fabric能不能跑出一条新路，关键不在技术规格，而在行业意愿。&lt;/strong&gt;&lt;/p&gt;
+  &lt;p&gt;广告技术公司是否愿意把竞价请求交由AWS调度？是否愿意放弃对协议链路的自主掌控，把“方向盘”交给一家平台型公司？这不是工程问题，而是信任问题。&lt;/p&gt;
+  &lt;p&gt;而最现实的矛盾也恰恰源于这一点：&lt;strong&gt;亚马逊，不只是云服务提供者，它自己也做广告。&lt;/strong&gt;&lt;/p&gt;
+  &lt;p&gt;AWS 虽然只是“跑数据”的管道，但当这个管道足够宽、足够快，足以承载起整个广告请求的实时传输时，中立的基础设施的定位还成立吗？&lt;/p&gt;
+  &lt;p&gt;&lt;strong&gt;如果一个控制传输链路的公司，同时也有自己的广告业务，那行业是否可能再次走进“谷歌广告垄断”的老路？&lt;/strong&gt;&lt;/p&gt;
+  &lt;p&gt;虽然AWS与Amazon Ads在组织架构上属于不同体系，但行业里没有人会天真地认为二者之间是完全割裂的。&lt;/p&gt;
+  &lt;p&gt;这就是为什么，RTB Fabric在带来“非谷歌选项”的同时，也让行业多了一层新的焦虑。&lt;/p&gt;
+  &lt;p&gt;对亚马逊而言，这场基础设施的重构，是一次雄心勃勃的布局，也是一场需要耐心的豪赌。&lt;/p&gt;
+  &lt;p&gt;赌的是行业对谷歌广告生态惯性的松动，也赌他们愿意为一条看似更开放、可控的链路重新下注。&lt;/p&gt;
+  &lt;p&gt;只有当更多人愿意上车，新的秩序才有可能真正成立。&lt;/p&gt;
+  &lt;p&gt;否则，它就只是一条速度很快的“备用道”。而主路依旧会在谷歌手中。（作者：刀客doc）&lt;/p&gt;
+  &lt;p&gt;本文来自微信公众号&lt;a href="https://mp.weixin.qq.com/s/Zb8KOf5rCGG3kbs7k-IQKg"&gt;“刀客Doc”&lt;/a&gt;，作者：刀客doc，36氪经授权发布。&lt;/p&gt;
+ 
+ ]]&gt;</content:encoded>
     </item>
     <item>
       <title>谷歌终止隐私沙盒计划，也关闭了开放互联网的共识大门？</title>
       <link>https://www.36kr.com/p/3517118304246152</link>
-      <guid>https://www.36kr.com/p/3517118304246152</guid>
+      <guid isPermaLink="true">https://www.36kr.com/p/3517118304246152</guid>
       <pubDate>Mon, 20 Oct 2025 08:19:29 GMT</pubDate>
-      <description><![CDATA[隐私沙盒终止，是互联网广告隐私改革的一个时代句点。]]></description>
-    </item>
-    <item>
-      <title>广告人的终局是做网红？</title>
-      <link>https://www.36kr.com/p/3511677913373064</link>
-      <guid>https://www.36kr.com/p/3511677913373064</guid>
-      <pubDate>Thu, 16 Oct 2025 11:08:38 GMT</pubDate>
-      <description><![CDATA[广告人比任何行业，比任何时候都需要做 IP、当网红。]]></description>
-    </item>
-    <item>
-      <title>亚马逊广告接盘微软</title>
-      <link>https://www.36kr.com/p/3503489540970626</link>
-      <guid>https://www.36kr.com/p/3503489540970626</guid>
-      <pubDate>Sat, 11 Oct 2025 01:33:39 GMT</pubDate>
-      <description><![CDATA[亚马逊DSP再下一城。]]></description>
-    </item>
-    <item>
-      <title>始祖鸟和西贝犯了同一个错误</title>
-      <link>https://www.36kr.com/p/3477396399265928</link>
-      <guid>https://www.36kr.com/p/3477396399265928</guid>
-      <pubDate>Mon, 22 Sep 2025 08:25:58 GMT</pubDate>
-      <description><![CDATA[公众是最后的审判人。]]></description>
-    </item>
-    <item>
-      <title>韩剧还是韩国的，但韩流已经属于奈飞</title>
-      <link>https://www.36kr.com/p/3473299304438150</link>
-      <guid>https://www.36kr.com/p/3473299304438150</guid>
-      <pubDate>Fri, 19 Sep 2025 09:01:06 GMT</pubDate>
-      <description><![CDATA[韩剧已经被「美化」了。]]></description>
-    </item>
-    <item>
-      <title>老罗火烧华与华，为什么会有企业愿花600万咨询费？</title>
-      <link>https://www.36kr.com/p/3468129904203912</link>
-      <guid>https://www.36kr.com/p/3468129904203912</guid>
-      <pubDate>Tue, 16 Sep 2025 03:53:06 GMT</pubDate>
-      <description><![CDATA[华与华600万咨询费值不值？]]></description>
-    </item>
-    <item>
-      <title>电通集团要退守日本？全球化的路终于还是走不通了</title>
-      <link>https://www.36kr.com/p/3463857223833990</link>
-      <guid>https://www.36kr.com/p/3463857223833990</guid>
-      <pubDate>Mon, 15 Sep 2025 05:02:39 GMT</pubDate>
-      <description><![CDATA[电通集团的国际扩张史。]]></description>
-    </item>
-    <item>
-      <title>品牌失格：当广告也成了一种公共表达</title>
-      <link>https://www.36kr.com/p/3457766688086146</link>
-      <guid>https://www.36kr.com/p/3457766688086146</guid>
-      <pubDate>Mon, 08 Sep 2025 09:27:28 GMT</pubDate>
-      <description><![CDATA[品牌对舆论场的理解，已经落后了]]></description>
-    </item>
-    <item>
-      <title>不再是Facebook的小弟，Instagram会成为Meta广告业务的第二曲线吗？</title>
-      <link>https://www.36kr.com/p/3442607487818116</link>
-      <guid>https://www.36kr.com/p/3442607487818116</guid>
-      <pubDate>Fri, 29 Aug 2025 03:47:32 GMT</pubDate>
-      <description><![CDATA[IG走了独立行情？]]></description>
-    </item>
-    <item>
-      <title>沃尔玛取消与TTD的独家合作，对程序化广告意味着什么？</title>
-      <link>https://www.36kr.com/p/3439786020510084</link>
-      <guid>https://www.36kr.com/p/3439786020510084</guid>
-      <pubDate>Wed, 27 Aug 2025 06:45:34 GMT</pubDate>
-      <description><![CDATA[沃尔玛为什么不再与TTD的独家合作？]]></description>
-    </item>
-    <item>
-      <title>Meta、TikTok广告流量价格正在集体暴涨</title>
-      <link>https://www.36kr.com/p/3432084041832584</link>
-      <guid>https://www.36kr.com/p/3432084041832584</guid>
-      <pubDate>Thu, 21 Aug 2025 08:02:43 GMT</pubDate>
-      <description><![CDATA[流量费用为什么涨？]]></description>
-    </item>
-    <item>
-      <title>对待GenAI，为什么亚马逊和沃尔玛选择了完全相反的策略？</title>
-      <link>https://www.36kr.com/p/3427920074365315</link>
-      <guid>https://www.36kr.com/p/3427920074365315</guid>
-      <pubDate>Mon, 18 Aug 2025 08:10:32 GMT</pubDate>
-      <description><![CDATA[亚马逊往左，沃尔玛向右。]]></description>
-    </item>
-    <item>
-      <title>亚马逊和谷歌的决裂，是AI震动广告业的开始</title>
-      <link>https://www.36kr.com/p/3419774654945409</link>
-      <guid>https://www.36kr.com/p/3419774654945409</guid>
-      <pubDate>Tue, 12 Aug 2025 12:51:44 GMT</pubDate>
-      <description><![CDATA[亚马逊开始硬刚谷歌]]></description>
-    </item>
-    <item>
-      <title>8大赛道与29起融资并购，拼出上半年广告业的新版图</title>
-      <link>https://www.36kr.com/p/3415017581697410</link>
-      <guid>https://www.36kr.com/p/3415017581697410</guid>
-      <pubDate>Mon, 11 Aug 2025 01:36:53 GMT</pubDate>
-      <description><![CDATA[行业的关注点，正在从“买流量”转向“建基础设施”]]></description>
-    </item>
-    <item>
-      <title>AI终归还是改变了广告费的流向，广告市场迎来大洗牌</title>
-      <link>https://www.36kr.com/p/3409926172645508</link>
-      <guid>https://www.36kr.com/p/3409926172645508</guid>
-      <pubDate>Tue, 05 Aug 2025 23:29:45 GMT</pubDate>
-      <description><![CDATA[AI时代，广告预算流向哪里？]]></description>
-    </item>
-    <item>
-      <title>广告业现状：越来越少的年轻人，越来越多的Freelancer</title>
-      <link>https://www.36kr.com/p/3399929105209734</link>
-      <guid>https://www.36kr.com/p/3399929105209734</guid>
-      <pubDate>Tue, 29 Jul 2025 11:56:06 GMT</pubDate>
-      <description><![CDATA[如果一个行业无法再承诺未来，它对下一代就彻底失去了吸引力。]]></description>
-    </item>
-    <item>
-      <title>阳狮的教科书和WPP的错题集 | 我看广告公司的数字化转型</title>
-      <link>https://www.36kr.com/p/3396671611574406</link>
-      <guid>https://www.36kr.com/p/3396671611574406</guid>
-      <pubDate>Sun, 27 Jul 2025 06:22:03 GMT</pubDate>
-      <description><![CDATA[阳狮集团如何逆袭？]]></description>
-    </item>
-    <item>
-      <title>为什么商业化部门成了大厂贪腐的重灾区？</title>
-      <link>https://www.36kr.com/p/3392982771177863</link>
-      <guid>https://www.36kr.com/p/3392982771177863</guid>
-      <pubDate>Fri, 25 Jul 2025 00:02:44 GMT</pubDate>
-      <description><![CDATA[商业化部门，大厂贪腐的重灾区？]]></description>
-    </item>
-    <item>
-      <title>企业家IP“破产”于2025</title>
-      <link>https://www.36kr.com/p/3391695738034309</link>
-      <guid>https://www.36kr.com/p/3391695738034309</guid>
-      <pubDate>Thu, 24 Jul 2025 00:45:52 GMT</pubDate>
-      <description><![CDATA[现在，我有些理解钟睒睒了。]]></description>
-    </item>
-    <item>
-      <title>Netflix与YouTube开始在广告战场正面交锋</title>
-      <link>https://www.36kr.com/p/3390256096090505</link>
-      <guid>https://www.36kr.com/p/3390256096090505</guid>
-      <pubDate>Wed, 23 Jul 2025 00:39:57 GMT</pubDate>
-      <description><![CDATA[广告正成为Netflix与YouTube正面对抗的关键战场。]]></description>
-    </item>
-    <item>
-      <title>2025，大厂品牌部大撤退</title>
-      <link>https://www.36kr.com/p/3388434320005248</link>
-      <guid>https://www.36kr.com/p/3388434320005248</guid>
-      <pubDate>Mon, 21 Jul 2025 08:47:32 GMT</pubDate>
-      <description><![CDATA[当品牌不再“神圣”，它只能更贴近业务与现实]]></description>
-    </item>
-    <item>
-      <title>拼多多突然暂停信息流投放CID，原因没那么简单</title>
-      <link>https://www.36kr.com/p/3384098630769025</link>
-      <guid>https://www.36kr.com/p/3384098630769025</guid>
-      <pubDate>Fri, 18 Jul 2025 09:02:32 GMT</pubDate>
-      <description><![CDATA[拼多多暂停CID，具体原因是什么]]></description>
-    </item>
-    <item>
-      <title>小红书的付费笔记、微商的朋友圈推广是广告吗？从饭店随手拍菜品被罚45万说起</title>
-      <link>https://www.36kr.com/p/3380265246693506</link>
-      <guid>https://www.36kr.com/p/3380265246693506</guid>
-      <pubDate>Wed, 16 Jul 2025 02:29:44 GMT</pubDate>
-      <description><![CDATA[小红书付费笔记，朋友圈推广算广告吗]]></description>
-    </item>
-    <item>
-      <title>B站要做播客了？聊聊我对播客营销价值的几点看法</title>
-      <link>https://www.36kr.com/p/3370324263557504</link>
-      <guid>https://www.36kr.com/p/3370324263557504</guid>
-      <pubDate>Wed, 09 Jul 2025 01:58:37 GMT</pubDate>
-      <description><![CDATA[播客更像是公关媒介，而不是广告媒介。]]></description>
-    </item>
-    <item>
-      <title>TikTok切入YouTube的客厅腹地，我有四个猜想</title>
-      <link>https://www.36kr.com/p/3363377473853569</link>
-      <guid>https://www.36kr.com/p/3363377473853569</guid>
-      <pubDate>Fri, 04 Jul 2025 02:36:30 GMT</pubDate>
-      <description><![CDATA[客厅CTV战争终于打响了]]></description>
-    </item>
-    <item>
-      <title>德国为什么没有诞生广告巨头？</title>
-      <link>https://www.36kr.com/p/3360236439771269</link>
-      <guid>https://www.36kr.com/p/3360236439771269</guid>
-      <pubDate>Tue, 01 Jul 2025 10:19:26 GMT</pubDate>
-      <description><![CDATA[德国广告业与英美有什么不同？]]></description>
-    </item>
-    <item>
-      <title>WPP走下神坛</title>
-      <link>https://www.36kr.com/p/3333538697946375</link>
-      <guid>https://www.36kr.com/p/3333538697946375</guid>
-      <pubDate>Fri, 13 Jun 2025 01:36:53 GMT</pubDate>
-      <description><![CDATA[丢玛氏、败阳狮、亏业绩，WPP广告集团到了至暗时刻？]]></description>
-    </item>
-    <item>
-      <title>快手磁力引擎副总裁冯超离职，王志强接管渠道业务</title>
-      <link>https://www.36kr.com/p/3261076257236485</link>
-      <guid>https://www.36kr.com/p/3261076257236485</guid>
-      <pubDate>Tue, 22 Apr 2025 09:59:07 GMT</pubDate>
-      <description><![CDATA[快手商业化调整]]></description>
-    </item>
-    <item>
-      <title>谁在制造天价医美？</title>
-      <link>https://www.36kr.com/p/3252834942526976</link>
-      <guid>https://www.36kr.com/p/3252834942526976</guid>
-      <pubDate>Thu, 17 Apr 2025 00:56:45 GMT</pubDate>
-      <description><![CDATA[医美产业链定价权的博弈]]></description>
-    </item>
-    <item>
-      <title>亚马逊把Netflix的广告价格打下来了</title>
-      <link>https://www.36kr.com/p/3241512650024450</link>
-      <guid>https://www.36kr.com/p/3241512650024450</guid>
-      <pubDate>Wed, 09 Apr 2025 01:41:59 GMT</pubDate>
-      <description><![CDATA[美国流媒体广告市场价格战越打越凶。]]></description>
-    </item>
-    <item>
-      <title>聊一聊TikTok的广告模式</title>
-      <link>https://www.36kr.com/p/3230219526546946</link>
-      <guid>https://www.36kr.com/p/3230219526546946</guid>
-      <pubDate>Tue, 01 Apr 2025 01:44:15 GMT</pubDate>
-      <description><![CDATA[如何看懂TikTok的广告价值]]></description>
-    </item>
-    <item>
-      <title>腾讯广告拆分市场部，B2B企业还需要市场部吗？</title>
-      <link>https://www.36kr.com/p/3171460134551305</link>
-      <guid>https://www.36kr.com/p/3171460134551305</guid>
-      <pubDate>Tue, 18 Feb 2025 03:22:41 GMT</pubDate>
-      <description><![CDATA[商业平台的市场部没那么重要了]]></description>
-    </item>
-    <item>
-      <title>超越广州深圳，杭州跻身广告第三城，谁更能代表广告业的未来？</title>
-      <link>https://www.36kr.com/p/3164776366243334</link>
-      <guid>https://www.36kr.com/p/3164776366243334</guid>
-      <pubDate>Thu, 13 Feb 2025 11:54:46 GMT</pubDate>
-      <description><![CDATA[为什么是杭州？]]></description>
-    </item>
-    <item>
-      <title>综艺行业困在广告里</title>
-      <link>https://www.36kr.com/p/3061723806056197</link>
-      <guid>https://www.36kr.com/p/3061723806056197</guid>
-      <pubDate>Mon, 02 Dec 2024 23:44:31 GMT</pubDate>
-      <description><![CDATA[放眼望去全是综N代，为什么新综艺越来越少？]]></description>
-    </item>
-    <item>
-      <title>追忆苏秋萍，聊一聊华语广告的那些年</title>
-      <link>https://www.36kr.com/p/3054365272850178</link>
-      <guid>https://www.36kr.com/p/3054365272850178</guid>
-      <pubDate>Wed, 27 Nov 2024 09:48:24 GMT</pubDate>
-      <description><![CDATA[故人陆续凋零，好似风中落叶]]></description>
-    </item>
-    <item>
-      <title>从龙有功的马斯克，还是救不了X的广告业务</title>
-      <link>https://www.36kr.com/p/3049797147885314</link>
-      <guid>https://www.36kr.com/p/3049797147885314</guid>
-      <pubDate>Sun, 24 Nov 2024 23:36:19 GMT</pubDate>
-      <description><![CDATA[X的未来，就是一个「X」]]></description>
-    </item>
-    <item>
-      <title>反垄断风暴下，谷歌广告帝国的扩张简史</title>
-      <link>https://www.36kr.com/p/3046258089655816</link>
-      <guid>https://www.36kr.com/p/3046258089655816</guid>
-      <pubDate>Thu, 21 Nov 2024 23:54:24 GMT</pubDate>
-      <description><![CDATA[谷歌的广告帝国岌岌可危？]]></description>
-    </item>
-    <item>
-      <title>《再见爱人4》能带动芒果TV的广告营收吗？</title>
-      <link>https://www.36kr.com/p/3036321701376903</link>
-      <guid>https://www.36kr.com/p/3036321701376903</guid>
-      <pubDate>Fri, 15 Nov 2024 00:01:33 GMT</pubDate>
-      <description><![CDATA[不能。]]></description>
-    </item>
-    <item>
-      <title>谁在赞助《再见爱人》？</title>
-      <link>https://www.36kr.com/p/3026072800097152</link>
-      <guid>https://www.36kr.com/p/3026072800097152</guid>
-      <pubDate>Thu, 07 Nov 2024 09:14:28 GMT</pubDate>
-      <description><![CDATA[品牌冠名话题综艺就像打七伤拳]]></description>
+      <description>&lt;![CDATA[ 隐私沙盒终止，是互联网广告隐私改革的一个时代句点。 ]]&gt;</description>
+      <content:encoded>&lt;![CDATA[ 
+ 
+ 
+  &lt;p&gt;本来应该是从从容容、游刃有余；&lt;/p&gt;
+  &lt;p&gt;结果变成了犹犹豫豫、停滞不前；&lt;/p&gt;
+  &lt;p&gt;到最后是草草收场、悄然落幕。&lt;/p&gt;
+  &lt;p&gt;10月17日，谷歌副总裁安东尼·查韦斯在该项目网站上的最新消息中宣布：“在评估了行业对其预期价值的反馈，并考虑到其采用率较低后，我们决定停用以下隐私沙盒技术：Topics、Protected Audiences（PAAPI）、Attribution Reporting、Private Aggregation 等十余项核心技术。&lt;/p&gt;
+  &lt;p&gt;《ADWEEK》报道，一位谷歌内部人士向其证实，谷歌不仅会终止这些技术，还会彻底终止整个项目。&lt;/p&gt;
+  &lt;p&gt;同一天，英国竞争与市场管理局（CMA）也宣布，&lt;strong&gt;谷歌无需继续履行其针对隐私沙盒（Privacy Sandbox）的监管承诺&lt;/strong&gt;。该承诺原用于限制谷歌在淘汰第三方Cookie过程中的潜在垄断行为。但随着谷歌在2024年中放弃弃用Cookie的原计划，这一监管框架被认为“失去了适用基础”，最终由CMA主动解除。&lt;/p&gt;
+  &lt;p&gt;隐私沙盒的历史，确实是命途多舛。&lt;/p&gt;
+  &lt;p&gt;从2019年的启动到2025年的结束，谷歌几乎每年都要更新一次时间表，而每一次更新，几乎都以一句话结尾：“我们需要更多时间。”&lt;/p&gt;
+  &lt;p&gt;第一次推迟是在2021年。谷歌原计划在2022年废除第三方Cookie，但后来表示整个行业还没有准备好，需要更长的测试周期，决定延期至2023年。&lt;/p&gt;
+  &lt;p&gt;2022年，英国的竞争与市场管理局（CMA）正式介入，提出监管意见。&lt;/p&gt;
+  &lt;p&gt;2023年，谷歌再次更新进展，说还在“广泛收集反馈”，于是时间线又向后推了一年，目标变成了2024年下半年。&lt;/p&gt;
+  &lt;p&gt;但到了2024、2025年，整个行业对沙盒的态度已经非常冷淡。谷歌在今年一季度的反馈报告中承认：“大型公司采用迟缓，测试启动受限。”&lt;/p&gt;
+  &lt;p&gt;&lt;img src="https://img.36krcdn.com/hsossms/20251020/v2_f8ca83165fd841f99fa0f7a269064555@5081058_oswg94196oswg1030oswg579_img_000?x-oss-process=image/format,jpg/interlace,1" /&gt;&lt;/p&gt;
+  &lt;p&gt;到了2025年10月，谷歌终于亲手拆除了它自己一手打造的系统。&lt;/p&gt;
+  &lt;p&gt;这个曾经被寄予“重塑广告隐私标准”厚望的项目，就此结束，也标志着互联网广告隐私改革的一个时代终结。&lt;/p&gt;
+  &lt;h2&gt;&lt;strong&gt;隐私沙盒的诞生&lt;/strong&gt;&lt;/h2&gt;
+  &lt;p&gt;时间回到2019年，当时的谷歌正处在一个非常关键的节点。&lt;/p&gt;
+  &lt;p&gt;在此之前，互联网上的广告几乎都靠第三方Cookie来追踪用户行为。&lt;/p&gt;
+  &lt;p&gt;广告商通过它可以知道用户访问了哪些网站、买过什么东西，然后给用户推送“精准广告”。&lt;/p&gt;
+  &lt;p&gt;这种方式虽然让广告更有效，但也带来了严重的隐私问题：&lt;strong&gt;用户的上网轨迹几乎是“裸奔”的。&lt;/strong&gt;&lt;/p&gt;
+  &lt;p&gt;于是各国监管机构开始施压，要求浏览器厂商必须&lt;strong&gt;限制追踪&lt;/strong&gt;。&lt;strong&gt;隐私监管的浪潮席卷全球&lt;/strong&gt;——GDPR在欧洲全面落地，美国加州的CCPA法案生效，数据保护的合规成本开始上升。&lt;/p&gt;
+  &lt;p&gt;苹果率先发动了“隐私革命”，在Safari浏览器中默认屏蔽第三方Cookie，并在2021年通过App Tracking Transparency（ATT）彻底改变了移动广告业的生态，Firefox也紧随其后。&lt;/p&gt;
+  &lt;p&gt;谷歌的Chrome作为全球最大的浏览器，如果直接照做，广告收入（它的命脉）就会受到巨大冲击。&lt;/p&gt;
+  &lt;p&gt;所以谷歌没有选择“硬砍Cookie”，&lt;/p&gt;
+  &lt;p&gt;而是提出了一个&lt;strong&gt;折中方案&lt;/strong&gt;——在保护用户隐私的同时，还能让广告主、网站和开发者继续正常运转，并且让所有方案都“可被监管、可被验证”，重构整个广告追踪逻辑。&lt;/p&gt;
+  &lt;p&gt;这个方案就是&lt;strong&gt;Privacy Sandbox（隐私沙盒）&lt;/strong&gt;。&lt;/p&gt;
+  &lt;p&gt;它的核心思路可以简单理解为：不再让用户的数据在网站之间流转，而是把广告需要的数据处理流程全部搬到浏览器本地。&lt;/p&gt;
+  &lt;p&gt;过去是广告平台来识别用户、追踪你、分析你；现在变成了浏览器自己来判断你感兴趣什么、该给你投放什么广告，然后只把“模糊的、不可识别的”结果发给外部。&lt;/p&gt;
+  &lt;p&gt;比如说，以前广告商想知道你喜欢什么，是靠在不同网站上放追踪器。你一边刷旅游网站、一边看数码产品，那些广告平台就能悄悄拼出一张你的“兴趣画像”。&lt;/p&gt;
+  &lt;p&gt;&lt;img src="https://img.36krcdn.com/hsossms/20251020/v2_7c19a4dca4eb4ab6a06d7f49a20b847c@5081058_oswg36900oswg1030oswg579_img_000?x-oss-process=image/format,jpg/interlace,1" /&gt;&lt;/p&gt;
+  &lt;p&gt;在隐私沙盒的场景下，谷歌试图让这件事只发生在Chrome的本地。&lt;/p&gt;
+  &lt;p&gt;浏览器每隔一段时间，会在你设备上生成几个大概的“兴趣标签”，比如科技、运动、美食、旅行。当你访问某个网站需要加载广告时，浏览器只会告诉广告系统这些“主题”，而不是暴露你具体访问过哪些页面。这就是隐私沙盒中Topics API的基本逻辑——用户只是被分类，但并不被识别。&lt;/p&gt;
+  &lt;p&gt;再比如，你经常会有这个经历：在某个购物网站看了一双鞋，结果几天内在各个地方都看到这双鞋。这叫“再营销”。传统做法是：广告商通过Cookie记录下你访问过某个商品，然后在各个页面继续向你展示。&lt;/p&gt;
+  &lt;p&gt;隐私沙盒的做法，是让浏览器自己记住你曾经看过什么商品，然后当你再次浏览网页的时候，广告匹配过程不再跑在广告平台的服务器上，而是直接在你的设备本地完成。&lt;/p&gt;
+  &lt;p&gt;浏览器会替你“参与竞价”，广告平台拿到的结果是展示哪条广告，而不是你点过哪个商品。这就是所谓的“受保护受众”，也就是PAAPI，目的是让广告商精准，但看不到你。&lt;/p&gt;
+  &lt;p&gt;还有一些更底层的机制，专门用来防止绕过沙盒的“投机行为”。比如有些网站会偷偷埋像素追踪、用iframe或脚本实现看不见的数据抓取，还有指纹识别这种“看一眼你设备信息就能认出你”的方法。&lt;/p&gt;
+  &lt;p&gt;为此，谷歌提出了Fenced Frames、Shared Storage等机制，把这些潜在的“侧漏路径”封闭起来，尽量让所有数据都只能在浏览器内部运转，不能悄悄带出。&lt;/p&gt;
+  &lt;p&gt;这也是沙盒之所以被称为“沙盒”的理由——就像一个密封的实验箱，数据只能在里面用，不能随便出去。&lt;/p&gt;
+  &lt;p&gt;整套隐私沙盒的技术设计，都是围绕一个核心转变展开的：不让数据离开用户的设备，而是让广告相关的计算过程本地化、封闭化。&lt;/p&gt;
+  &lt;p&gt;用户的兴趣、点击、行为、转化都“留在原地”，广告系统只能拿到结果，而不是过程。&lt;/p&gt;
+  &lt;p&gt;这听起来很美，也很先进，但实际落地却面临种种困难。&lt;/p&gt;
+  &lt;h2&gt;&lt;strong&gt;6年的拖延&lt;/strong&gt;&lt;/h2&gt;
+  &lt;p&gt;这几年里，谷歌的官方博客中出现过无数次“进展更新”，但每一次“进展”，其实都意味着又一次妥协。&lt;/p&gt;
+  &lt;p&gt;Topics API被简化；Attribution Reporting被弱化；Protected Audiences被重命名；Private Aggregation永远停留在“测试中”。&lt;/p&gt;
+  &lt;p&gt;到最后，隐私沙盒已经不是一个体系，而是一堆无法拼合的碎片。&lt;/p&gt;
+  &lt;p&gt;拖延的背后，是一种进退两难：谷歌既是世界上最大的广告卖家，又是浏览器与移动操作系统的守门人。它一手握着隐私的标准，一手控制着广告的入口。任何“保护隐私”的改革，最终都会回到一个核心问题——&lt;strong&gt;谷歌愿意牺牲多少利润来换取信任？&lt;/strong&gt;&lt;/p&gt;
+  &lt;p&gt;市场给出的答案是：不多。&lt;/p&gt;
+  &lt;p&gt;从技术层面看，隐私沙盒的试验结果并不理想。广告主抱怨归因误差太大，出版商发现竞价收入显著下降，而独立广告技术公司根本无法稳定调用接口。相比之下，传统的第三方Cookie虽然“肮脏”，但好用。&lt;/p&gt;
+  &lt;p&gt;&lt;img src="https://img.36krcdn.com/hsossms/20251020/v2_d812491809024245a8de751e8b080b91@5081058_oswg74741oswg1030oswg579_img_000?x-oss-process=image/format,jpg/interlace,1" /&gt;&lt;/p&gt;
+  &lt;p&gt;以Index Exchange为例，其在100多家出版商、数千个域名和10家DSP参与的实验中发现：启用了隐私沙盒API的展示，其每千次展示收入（CPM）比使用传统第三方Cookie的展示低了约33%。而如果既无Cookie也无沙盒支持，则下降幅度达36%。&lt;/p&gt;
+  &lt;p&gt;另一家机构Criteo的测试结果指出：如果立刻完全弃用第三方Cookie并依赖沙盒替代，媒体方收入可能减少约60%。&lt;/p&gt;
+  &lt;p&gt;简言之：沙盒在当前形态下，并没有接近“可替代Cookie”的角色，它的运行状态更像是一个尚在试验中的备用方案，而非成熟可投入的系统。&lt;/p&gt;
+  &lt;p&gt;更大的难题在于，&lt;strong&gt;隐私沙盒的成功前提，是整个广告生态的协同共建&lt;/strong&gt;。这不仅需要谷歌自己的团队开发API和浏览器底层支持，还需要DSP、SSP、第三方测量公司、再营销工具、归因平台等角色，迁移到这套全新机制中来。&lt;/p&gt;
+  &lt;p&gt;但现实是，&lt;strong&gt;这套系统既复杂、又昂贵，而且缺乏直接收益&lt;/strong&gt;。&lt;/p&gt;
+  &lt;p&gt;根据digiday在去年7月份一份报道，一些广告技术供应商正在退出谷歌的隐私沙盒。&lt;/p&gt;
+  &lt;p&gt;据报道，一家中型广告技术公司如果想要完整对接谷歌的隐私沙盒项目，开发成本可能高达1000万美元，还里面还有机会成本，要牺牲原有产品的资源与迭代节奏。即使谷歌提供的补贴高达500万美元，对于大多数公司来说也只是杯水车薪，更别提这笔资金往往附带条件。&lt;/p&gt;
+  &lt;p&gt;一位广告技术公司负责人在私下对媒体《Digiday》说：“大家之所以还在参与，是因为拿了谷歌的钱。否则，没有人会在没有明确监管结果的情况下，把几千个开发日时押进去。”&lt;/p&gt;
+  &lt;p&gt;&lt;strong&gt;广告技术公司不会因为道义或者愿景而投入开发，除非能看见可验证的回报路径——但沙盒系统从一开始，就很难提供这样的路径&lt;/strong&gt;。它是谷歌提出的解决方案，却要求整个生态买单。&lt;/p&gt;
+  &lt;p&gt;最终的结果是：&lt;strong&gt;沙盒从技术理想，变成了治理孤岛&lt;/strong&gt;。本该开放共建的标准体系，逐渐演化成谷歌一家的实验场，而生态里的其他参与者，不是裹挟其中，就是选择退场。&lt;/p&gt;
+  &lt;h2&gt;&lt;strong&gt;监管者的撤退&lt;/strong&gt;&lt;/h2&gt;
+  &lt;p&gt;关于隐私沙盒，还有一个重要的参与者——监管者。&lt;/p&gt;
+  &lt;p&gt;五年前，最早对隐私沙盒亮出红牌的，不是欧盟，也不是美国，而是英国。&lt;/p&gt;
+  &lt;p&gt;&lt;strong&gt;英国竞争与市场管理局（CMA）&lt;/strong&gt;是第一个正式对谷歌隐私沙盒计划展开竞争审查的监管机构。早在2021年，CMA就对“弃用第三方Cookie、以隐私沙盒替代”的行为发起调查。&lt;/p&gt;
+  &lt;p&gt;到了2022年，CMA更是迫使谷歌签署具有法律约束力的承诺。按照该承诺，谷歌同意在推进Sandbox关键变更前与CMA及ICO协作，公示测试结果，并确保其Sandbox设计不会自我优待其广告业务。此外，若谷歌计划弃用第三方Cookie，须在CMA支持其行动的前提下进行。&lt;/p&gt;
+  &lt;p&gt;CMA启动的是一种罕见的&lt;strong&gt;前置监管机制&lt;/strong&gt;，直接嵌入了谷歌产品的开发流程。&lt;/p&gt;
+  &lt;p&gt;在CMA的判断逻辑中，Chrome作为浏览器市场的绝对主导者，而谷歌又掌控了全球大部分数字广告的交易基础设施。如果让这样一个“双重角色”的科技巨头自行制定“隐私标准”，无异于既当运动员、又做裁判。&lt;/p&gt;
+  &lt;p&gt;这正是CMA推出“边开发、边审查”机制的原因：谷歌每推进一项隐私沙盒的API，不仅要对外披露完整的技术细节，还必须接受独立评估，并获得CMA的批准，才能继续部署。&lt;/p&gt;
+  &lt;p&gt;&lt;strong&gt;CMA的“单点监管”，具有全球范围的“模板效应”&lt;/strong&gt;。谷歌作为全球公司，一旦在英国设立了先例，其他市场——尤其是欧盟、美国——极可能直接套用这套机制，形成“外溢式监管”。&lt;/p&gt;
+  &lt;p&gt;而在英国脱欧后，其对数据主权的强调更强，CMA也更有动力将自己打造为“数据治理新秩序的试验田”。&lt;/p&gt;
+  &lt;p&gt;对谷歌而言，CMA是其隐私沙盒计划&lt;strong&gt;能否获得全球监管合法性背书的关键一环&lt;/strong&gt;。一旦赢得CMA的认同，谷歌就有望在其他国家推动更宽松、更接近其设计初衷的技术方案，进而主导未来的广告隐私规则。&lt;/p&gt;
+  &lt;p&gt;不过，随着时间推移，CMA也力不从心了。&lt;/p&gt;
+  &lt;p&gt;监管者发现，这场名为“隐私沙盒”的技术实验，远远超出了最初设想的范围。隐私沙盒并不是一种简单的追踪替代方案，而是一整套横跨&lt;strong&gt;浏览器（Chrome）、操作系统（Android）、广告竞价平台、开发工具与SDK体系&lt;/strong&gt;的复杂结构。&lt;/p&gt;
+  &lt;p&gt;换言之，要监管隐私沙盒，就意味着要监管整个网络广告生态架构。&lt;/p&gt;
+  &lt;p&gt;CMA在其2024年报告中明确指出，它已经“持续与谷歌就沙盒工具的设计、测试与行业影响开展接触”——但也坦承，对这些工具的广泛测试、跨参与方的整合、竞价机制的模拟以及可能的结构性影响，&lt;strong&gt;监管所面临的难度“极具挑战性”。&lt;/strong&gt;&lt;/p&gt;
+  &lt;p&gt;到了2024年夏天，当谷歌宣布不再按原计划废除第三方Cookie、推迟隐私沙盒上线时，英国CMA原本介入的法律与监管依据就不复存在了。&lt;/p&gt;
+  &lt;p&gt;CMA的监管本是基于，如果谷歌一刀切Cookie，替换成它自建的隐私沙盒，可能会改变整个广告生态的权力分布，其他广告技术公司将失去跨站追踪的手段，谷歌却保留全部优势。&lt;/p&gt;
+  &lt;p&gt;而如今，谷歌不再推进这一转变，“规则改变”这件事本身就没有发生，市场依旧运作在旧有框架之内——Cookie没变，广告交易方式也没变。&lt;strong&gt;从监管的视角看，一个尚未成型的风险，也就无从谈起监管。&lt;/strong&gt;&lt;/p&gt;
+  &lt;h2&gt;&lt;strong&gt;关上了共识的大门？&lt;/strong&gt;&lt;/h2&gt;
+  &lt;p&gt;隐私沙盒计划最红画上句号，也意味着——&lt;strong&gt;开放互联网生态的共识建立越来越难了&lt;/strong&gt;。&lt;/p&gt;
+  &lt;p&gt;隐私沙盒一度被寄予厚望，是谷歌在技术与监管夹缝中，主导的一次妥协的尝试。&lt;/p&gt;
+  &lt;p&gt;它想建立一个跨平台、跨广告主、跨媒体与开发者的技术中立标准，既回应隐私保护的政策诉求，也保留广告生态的可持续性。&lt;/p&gt;
+  &lt;p&gt;只不过，这种共识是由平台主导的，它的出发点是“维护谷歌自己的广告能力”，而不是“重建一个所有人都能信任的广告机制”。&lt;/p&gt;
+  &lt;p&gt;这注定了在“共识”与“效率”之间，它终究会失去两端的支持。&lt;/p&gt;
+  &lt;p&gt;最终，隐私沙盒暴露出的的问题是：&lt;strong&gt;各方之间的信任似乎已经消耗殆尽，平台怕数据流出，广告主担心无法衡量，媒体不信平台方，开发者没动力参与，监管又缺乏执行力。&lt;/strong&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;strong&gt;共识的建立基础已经不在。&lt;/strong&gt;&lt;/p&gt;
+  &lt;p&gt;我们甚至会担心，谷歌主导的隐私沙盒，会不会成为开放互联网广告领域，&lt;strong&gt;最后一次由大家一起参与、试图制定共同规则的大型改革尝试？&lt;/strong&gt;&lt;/p&gt;
+  &lt;p&gt;而谷歌的转身，至少意味着，它不再对达成共识抱有幻想。&lt;/p&gt;
+  &lt;p&gt;隐私沙盒计划没能成功。&lt;/p&gt;
+  &lt;p&gt;它倒下之后，留下的是更碎片化的广告技术，以及越来越难以跨系统流动的数据。&lt;/p&gt;
+  &lt;p&gt;今后，广告费最终流向哪里呢？&lt;/p&gt;
+  &lt;p&gt;&lt;strong&gt;只能在Meta、Amazon、TikTok的封闭系统内部消化&lt;/strong&gt;。这些系统无需达成共识，因为它们不再互通。数据不再流动，只在一个个“黑箱”中循环。&lt;/p&gt;
+  &lt;p&gt;&lt;strong&gt;透明已成过去式，黑箱才是当下的主旋律。&lt;/strong&gt;&lt;/p&gt;
+  &lt;p&gt;是的，封闭的围墙花园们会加速胜出。&lt;/p&gt;
+  &lt;p&gt;这也许不是谷歌的初衷，但却是隐私沙盒关停后留下的真实后果。&lt;/p&gt;
+  &lt;p&gt;本文来自微信公众号&lt;a href="https://mp.weixin.qq.com/s/30tpUuA-M4AVJlOQvrINbA"&gt;“刀客Doc”&lt;/a&gt;，作者：刀客doc，36氪经授权发布。&lt;/p&gt;
+ 
+ ]]&gt;</content:encoded>
     </item>
   </channel>
 </rss>
