@@ -8,6 +8,11 @@ on:
 permissions:
   contents: write
 
+# 同名 workflow 僅保留最新一次執行，舊的自動取消，減少 Pages 併發部署
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
